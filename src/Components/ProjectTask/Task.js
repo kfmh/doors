@@ -2,8 +2,41 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 
 export const Form = styled.form`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  #title {
+    height: 30px;
+    width: 180px;
+    font-size: 1.1rem
+  }
+  #deadline {
+    height: 30px;
+    width: 180px;
+    font-size: 1.1rem
+  }
+  #required {
+    padding: 0;
+    font-size: .8rem;
+    color: pink;
+  }
   div {
-    margin-top: 50px;
+    margin-top: 20px;
+    height: fit-content;
+  }
+  label {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+  button {
+    margin: 20px;
+    max-width: 300px;
+    width: 60%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.1rem;
   }
 `
 export const StartProject = styled.div`
@@ -11,6 +44,15 @@ export const StartProject = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  align-items: center;
+
+  h2 {
+    padding: 0px;
+    margin: 20px 0 0 0;
+  }
+  textarea {
+    width: 100%;
+  }
 `
 
 const ProjectForm = () => {
@@ -18,7 +60,8 @@ const ProjectForm = () => {
   const [description, setDescription] = useState('');
   const [purpose, setPurpose] = useState('');
   const [deadline, setDeadline] = useState('');
-  const [moreInfoText, setMoreInfoText] = useState('');
+  const [consequence, setConsequence] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,29 +70,29 @@ const ProjectForm = () => {
       description,
       purpose,
       deadline,
-      moreInfoText
+      consequence,
+      title
     });
   };
 
   return (
     <StartProject>
-      <h1>Start Project</h1>
+      <h2>New Project</h2>
       <Form className="project-form" onSubmit={handleSubmit}>
-        {/* <div>
-          <label htmlFor="description">Title</label>
-          <br/>
-          <input 
-            type="text"
-            id="description"
-            value={description}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div> */}
+        <input 
+          type="text"
+          id="title"
+          placeholder='Project name...'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+
         <div>
-          <label htmlFor="description">Project Description</label>
+          <label htmlFor="description">Project Description <span id='required'>Required</span></label>
           <br/>
           <textarea
+            rows="8" cols="40"
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -58,9 +101,10 @@ const ProjectForm = () => {
         </div>
 
         <div>
-          <label htmlFor="purpose">Project Purpose</label>
+          <label htmlFor="purpose">Project Purpose <span id='required'>Required</span></label>
           <br/>
           <textarea
+            rows="8" cols="40"
             id="purpose"
             value={purpose}
             onChange={(e) => setPurpose(e.target.value)}
@@ -69,7 +113,19 @@ const ProjectForm = () => {
         </div>
 
         <div>
-          <label htmlFor="deadline">Deadline Date</label>
+          <label htmlFor="consequence">Consequence of missing deadline <span id='required'>Required</span></label>
+          <br/>
+          <textarea
+            rows="8" cols="40"
+            id="consequence"
+            value={consequence}
+            onChange={(e) => setConsequence(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="deadline">Deadline Date <span id='required'>Required</span></label>
           <br/>
           <input
             type="date"
@@ -80,18 +136,7 @@ const ProjectForm = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor="moreInfoText">Risc of not finishing on time</label>
-          <br/>
-          <textarea
-            id="moreInfoText"
-            value={moreInfoText}
-            onChange={(e) => setMoreInfoText(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit">Submit</button>
+        <button type="submit">Start Project</button>
       </Form>
     </StartProject>
   );

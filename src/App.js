@@ -1,9 +1,9 @@
 // General imports
 import './App.css';
+import LoadingAnimation from './Components/LoadingAnimation'
 
 // Component specific imports
 import { useEffect, useState } from "react";
-import LoadingAnimation from './Components/LoadingAnimation'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing  from "./Routes/Landing/Landing"
 import User     from "./Routes/User/User"
