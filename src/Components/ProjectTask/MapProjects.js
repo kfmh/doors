@@ -6,13 +6,26 @@ import LoadingAnimation from '../../Components/LoadingAnimation'
 export const ProjectsComp = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100vw;
-    padding: 20px;
-    
+    #projectInfo {
+        margin-top: 20px;
+        h4 {
+            margin: 0;
+            padding: 0;
+            font-weight: 200;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
     #projectInstance {
+        width: 80%;
         margin: 10px;
         padding: 10px;
         border: 1px solid white;
+        border-radius: 10px;
     }
 `
 
@@ -28,14 +41,29 @@ const MapProjects = (props) => {
         <>
         {projects.length ? ( // Check if projects is not an empty array
                 <ProjectsComp>
-                    <h1>My Blog Posts</h1>
+                    <h1>My Projects</h1>
                     {projects.map(project => (
                         <div id="projectInstance" key={project.id}>
-                            <p>{project.projectName}</p>
-                            <p>{project.description}</p>
-                            <p>{project.purpose}</p>
-                            <p>{dataString(project.deadline)}</p>
-                            <p>{project.consequence}</p>
+                            <div id="projectInfo">
+                                <h4>Project: {project.projectName}</h4>
+                            </div>
+                            <div id="projectInfo">
+                                <h4>Description:</h4>
+                                <p>{project.description}</p>
+                            </div>
+                            <div id="projectInfo">
+                                <h4>Purpose:</h4>
+                                <p>{project.purpose}</p>
+                            </div>
+                            <div id="projectInfo">
+                                <h4>Deadline:</h4>
+                                <p>{dataString(project.deadline)}</p>
+
+                            </div>
+                            <div id="projectInfo">
+                                <h4>Consequence:</h4>
+                                <p>{project.consequence}</p>
+                            </div>
                         </div>
                     ))}
 

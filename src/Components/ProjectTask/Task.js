@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
+import { handleAddData } from "../../Firebase/PostData"
 
 export const Form = styled.form`
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,11 +12,11 @@ export const Form = styled.form`
     height: 30px;
     width: 180px;
     font-size: 1.1rem
-  }
+  }.
   #deadline {
     height: 30px;
     width: 180px;
-    font-size: 1.1rem
+    font-size: 1.5rem
   }
   #required {
     padding: 0;
@@ -42,7 +43,6 @@ export const Form = styled.form`
 export const StartProject = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
   height: 100vh;
   align-items: center;
 
@@ -55,7 +55,7 @@ export const StartProject = styled.div`
   }
 `
 
-const ProjectForm = () => {
+const ProjectForm = (props) => {
   // const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [purpose, setPurpose] = useState('');
@@ -66,13 +66,13 @@ const ProjectForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Process the form data here, e.g., send it to a server or perform any other actions
-    console.log({
-      description,
-      purpose,
-      deadline,
-      consequence,
-      title
-    });
+    // console.log({
+    //   description,
+    //   purpose,
+    //   deadline,
+    //   consequence,
+    //   title
+    // });
   };
 
   return (
@@ -136,7 +136,7 @@ const ProjectForm = () => {
           />
         </div>
 
-        <button type="submit">Start Project</button>
+        <button onClick={() => handleAddData(title, description, purpose, consequence, deadline, props.user)}>Start Project</button>
       </Form>
     </StartProject>
   );

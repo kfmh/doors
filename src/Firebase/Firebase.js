@@ -14,7 +14,8 @@ import { getFirestore,
   collection,
   query, 
   where,
-  // setDoc,
+  setDoc,
+  addDoc
   // updateDoc
 } from "firebase/firestore"
 
@@ -55,9 +56,11 @@ export {
   query, where,
   collection,
   doc,
+  setDoc,
   getDoc,
   getDocs,
   auth,
+  addDoc, 
   db,
   logInWithEmailAndPassword,
   signOutUser,

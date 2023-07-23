@@ -9,7 +9,7 @@ import Landing  from "./Routes/Landing/Landing"
 import User     from "./Routes/User/User"
 import Login     from "./Authentication/Login"
 import SignOut     from "./Authentication/SignOut"
-import Task     from "./Components/ProjectTask/Task"
+import ProjectForm     from "./Components/ProjectTask/Task"
 
 // import Signout     from "./Authentication/Signout"
 // import useMediaQuery from '@mui/material/useMediaQuery';
@@ -47,7 +47,7 @@ function App() {
               <Route path="/User" element={<User user={user} isLoggedIn={isLoggedIn}/>} />
               <Route path="/Login" element={<Login/>} />
               <Route path="/SignOut" element={<SignOut/>} />
-              <Route path="/Task" element={<Task user={user}/>} />
+              <Route path="/Task" element={<ProjectForm user={user}/>} />
             </Route>
           </Routes>
         </BrowserRouter>
