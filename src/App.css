@@ -3,26 +3,4 @@ body {
   color: white;
 }
 
-.bottom-nav-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 56px; /* You can adjust the height as needed */
-  background-color: #f0f0f0; /* Set your desired background color */
-  border-top: 1px solid #ccc; /* Optional: Add a border at the top */
-}
 
-.bottom-nav-bar button {
-  padding: 12px;
-  font-size: 14px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.bottom-nav-bar button.active {
-  color: #007bff; /* Set your desired active tab color */
-}

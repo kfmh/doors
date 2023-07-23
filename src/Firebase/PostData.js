@@ -8,13 +8,15 @@ export const handleAddData = async (projectName, description, purpose, consequen
         description: description,
         purpose: purpose,
         consequence: consequence,
-        deadline: deadline,
+        deadline: new Date(deadline),
     };
-    console.log(deadline);
-    // const collectionRef = collection(db, "user", userID.uid, "projects");
-    // const documentRef = doc(collectionRef);
+    console.log(new Date(deadline));
+    
+    const collectionRef = collection(db, "user", userID.uid, "projects");
+    const documentRef = doc(collectionRef);
 
-    // await setDoc(documentRef, data);
-    //   console.log("Document written with ID: ");
+    await setDoc(documentRef, data);
+      console.log("Document written with ID: ");
       
   };
+

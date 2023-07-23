@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
 import LoadingAnimation from '../../Components/LoadingAnimation'
 import { auth } from "../../Firebase/Firebase"
-import { getUserInfo } from "../../Firebase/FetchData"
+import { getProjects } from "../../Firebase/FetchData"
 
+import MapProjects  from "../../Components/ProjectTask/MapProjects"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 
-export const User = styled.div`
+export const ProjectsWindow = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +28,7 @@ export const User = styled.div`
 
 const UserPage = () => {
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState(null);
+  const [projects, setProjects] = useState('')
   
   const [user, loading, error] = useAuthState(auth);
   useEffect(() => {
@@ -41,7 +42,7 @@ const UserPage = () => {
     const fetchData = async () => {
       try {
         // Call getProjects with the necessary props
-        await getUserInfo({ user: { uid: `${user.uid}` }, setUserInfo });
+        await getProjects({ user: { uid: `${user.uid}` }, setProjects });;
       } catch (error) {
         console.error('Error while fetching projects:', error);
       }
@@ -53,10 +54,15 @@ const UserPage = () => {
 
   return (
     <>
-      { userInfo ?
-        <User>
-          <h1 style={{textAlign: 'center'}}>{userInfo.userName}</h1>
-        </User>
+      { projects ?
+        <>
+            <ProjectsWindow>
+            <div>
+                <MapProjects projects={projects}/>
+            </div>
+            </ProjectsWindow>
+        </>
+
         :
         <LoadingAnimation/>
       }
