@@ -2,6 +2,7 @@ import '../App.css';
 import styled from 'styled-components'
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+
 import { Outlet, Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 
@@ -51,7 +52,7 @@ const BottomNavBar = () => {
       }, [isDesktopDevice]);
 
     return (
-        <> 
+        <>
             <Navbar style={{ width:`${width}`, height: `${height}`, flexDirection: `${flexDirection}`}}>
                 <Link to="/Projects">
                     <button
@@ -87,7 +88,7 @@ const BottomNavBar = () => {
                 </Link>    
             </Navbar>
             <Outlet/>
-        </>
+        </> 
     );
 };
 

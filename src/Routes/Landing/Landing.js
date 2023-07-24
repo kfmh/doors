@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Landing = styled.div`
     display: flex;
@@ -46,7 +47,17 @@ export const CTA = styled.section`
     
 `
 
-const LandingPage = () => {
+
+const LandingPage = (props) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (props.user) {
+      navigate("/User");
+      console.log("Login successful");
+    }
+  }, [props.user, navigate]);
+
   return (
     <Landing>
         <header>

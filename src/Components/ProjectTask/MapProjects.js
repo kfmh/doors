@@ -7,7 +7,7 @@ import ProjectsComp  from "./ProjectsComponent";
 
 const MapProjects = (props) => {
     const [projects] = useState(props.projects)
-    
+    console.log(projects)
 
     return (
         <>
@@ -16,8 +16,7 @@ const MapProjects = (props) => {
 
                     <h1 style={{textAlign: "center"}}>My Projects</h1>
                     {projects.map(project => (
-                        <ProjectsComp project={project}/>
-
+                        <ProjectsComp key={project.consequence} project={project}/>
                     ))}
                 </>
 

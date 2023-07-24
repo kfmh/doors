@@ -44,7 +44,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={ isLoggedIn ? <Navbar/> : null}>
-              <Route index element={<Landing/>} />
+              <Route index element={<Landing user={user}/>} />
               <Route path="/User" element={<User user={user} isLoggedIn={isLoggedIn}/>} />
               <Route path="/Projects" element={<Projects user={user} isLoggedIn={isLoggedIn}/>} />
               <Route path="/Login" element={<Login/>} />
