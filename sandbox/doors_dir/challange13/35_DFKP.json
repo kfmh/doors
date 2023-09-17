@@ -1,0 +1,70 @@
+# End to end, from sea to sea,
+# Nemo's voyage was one of glee.
+# Through seven vast oceans, his legend unfurled,
+# An error in nature that brightened the world.
+
+
+import os
+import random
+
+class RandomABIntUpdater:
+    def __init__(self):
+        self.a = 0
+        self.b = 0
+        self.a_new = 0
+        self.b_new = 0
+    
+    def update(self):
+        while self.a_new == self.a and self.b_new == self.b:
+            self.a_new = random.randint(1, 9)
+            self.b_new = random.randint(1, 9)
+            sum_result = self.a_new + self.b_new
+        
+        self.a, self.b = self.a_new, self.b_new
+        
+        return sum_result, self.a, self.b
+
+
+updater = RandomABIntUpdater()
+
+def main():
+    order = "Descending"
+    response = "run"
+    score = 0
+    sort_function = "Size"
+
+    while response != "q":
+        correct, a, b = updater.update()
+
+        os.system('clear')
+        print(f"score = {score}\n")
+        print(f"What is the sum of\n\n{a} + {b} = ?\n")
+        print("quit = q\n")
+
+        response = input("> ")
+        
+        if len(response) == 1 and not response.isdigit():
+            os.system('clear')
+            print("Look under the table")
+            break
+
+        if response == "q":
+            os.system('clear')
+            print(f"Your score is {score}")
+            break
+
+        try:
+            if int(response) == correct:
+                os.system('clear')
+                print("correct")
+                score += 1
+            else:
+                os.system('clear')
+                print("try again")
+        except ValueError:  
+            os.system('clear')
+            print(f"Sort by {sort_function} {order}")
+            break
+
+if __name__ == "__main__":
+    main()
