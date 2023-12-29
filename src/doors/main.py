@@ -6,6 +6,7 @@ from rich.panel import Panel
 from rich.text import Text
 import time
 import os
+import json
 
 multi_answer = {
     "question": "\n# What is the output of the Python expression:\n\n>>>print(3*1**3)\n",
@@ -15,10 +16,22 @@ multi_answer = {
     "explanation": "Exponents (1**3) have higher precedence than multiplication (3*1)"
 }
 
+correct_emoji = "🔑"
+wrong_emoji = "❌"
+
+a, b, c = "🅰", "🅱", "🅲"
+question_mark = "❔"
+
+path = "./mcq.json"
+with open(path, 'r') as file:
+    question = json.load(file)
+
 console = Console()
 
 def clar_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
 
 def render_table(m_a, step):
     text = p(m_a['question'])
