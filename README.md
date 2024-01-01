@@ -1,3 +1,2 @@
 # Doors
-
-
+Education is a universal benefit, and should be accessible at any age, and any project. Our focus is on overcoming two of the biggest conventional hurdles: time and money. Picture a world where education seamlessly translates into financial reward. This idea combines educational technology, artificial intelligence, gaming, marketing, and blockchain. Our aim is simple: to enable you to display your natural intelligence without altering the existing system.
