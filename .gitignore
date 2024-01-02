@@ -28,3 +28,6 @@ firebase-config.json
 /sandbox*
 /venv*
 devs.ipynb
+
+dist/
+*.egg-info/

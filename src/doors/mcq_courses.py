@@ -9,6 +9,8 @@ import time
 import os
 import random
 from tqdm import tqdm
+import pkg_resources
+
 # MCQ emojies
 correct_emoji = "🔑"
 wrong_emoji = "❌"
@@ -17,14 +19,13 @@ question_mark = "❔"
 
 # -------------------------------------------------------------
 class MCQ:
-    def __init__(self, mcq_json:str):
+    def __init__(self, mcq_json:str="./mcq_courses/"):
         """_summary_
 
         Args:
-            mcq_json (str): _description_
+            mcq_json (str): 
         """
-        with open(mcq_json, 'r') as file:
-            self.courses = json.load(file)
+        self.mcq_json = mcq_json
         self.console = Console()
     
     def clear_screen(self):
@@ -45,15 +46,22 @@ class MCQ:
             p(f"\nExplanation:\n{question['explanation']}\n")
     
 # -------------------------------------------------------------
-    def mcq_process(self, course):
-        for q in list(self.courses[course]):
+    def mcq_process(self, course:str):
+        path = pkg_resources.resource_filename(__name__, f'{self.mcq_json}{course}.json')
+        with open(path, 'r') as file:
+            course_data = json.load(file)
+
+        for q in list(course_data[course]):
             self.clear_screen()
-            answers = [[self.courses[course][q]['wrong_1'], question_mark, wrong_emoji], 
-                    [self.courses[course][q]['wrong_2'], question_mark, wrong_emoji], 
-                    [self.courses[course][q]['correct'], question_mark, correct_emoji]]
+            answers = [[course_data[course][q]['wrong_1'], 
+                        question_mark, wrong_emoji], 
+                       [course_data[course][q]['wrong_2'], 
+                        question_mark, wrong_emoji], 
+                       [course_data[course][q]['correct'], 
+                        question_mark, correct_emoji]]
             random.shuffle(answers)
 
-            self.render_table(self.courses[course][q], answers, 1)
+            self.render_table(course_data[course][q], answers, 1)
             print("")
 
             for i in tqdm(range(100), bar_format='{l_bar}|{bar}||Answer '):
@@ -61,10 +69,18 @@ class MCQ:
                 time.sleep(0.1)
 
             self.clear_screen()
-            self.render_table(self.courses[course][q], answers, 2)
+            self.render_table(course_data[course][q], answers, 2)
 
             response = input("next question: ")
             if response.upper() == "N":
                 break
             else: pass
-         
+    
+    def available_courses(self):
+        path = pkg_resources.resource_filename(__name__, f'{self.mcq_json}')
+        # List all files and directories in the specified path
+        for filename in os.listdir(path):
+            if filename == "mcq_template.json":
+                pass
+            else:
+                print(filename[:-5])

@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+rich = "==13.7.0"
+tqdm = "==4.66.1"
+
+[dev-packages]
+setuptools = ">=61.0"
+wheel = "*"
+
+[scripts]
+doors = "doors.main:main"
+
+[requires]
+python_version = "3.9"

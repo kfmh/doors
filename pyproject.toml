@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [options]
 include_package_data = true
 package_dir = {"" = "src"}
-packages = ["uw_chess"]
+packages = ["doors"]
 
 [project]
-name = "uw_chess"
-version = "0.1.0b1"
-description = "Practice playing blindfold chess"
+name = "doors"
+version = "0.1.0-alpha"
+description = "Educational ed-tech game project"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
 urls = {source = "https://github.com/kfmh/uw-chess"}
@@ -21,4 +21,4 @@ dependencies = [
 ]
 
 [project.scripts]
-uw_chess = "uw_chess.main:main_wrapper"
+doors = "doors.main:main"
