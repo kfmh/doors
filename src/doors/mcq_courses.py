@@ -80,7 +80,7 @@ class MCQ:
         path = pkg_resources.resource_filename(__name__, f'{self.mcq_json}')
         # List all files and directories in the specified path
         for filename in os.listdir(path):
-            if filename == "mcq_template.json":
+            if filename in ["mcq_template.json", "README.md"]:
                 pass
             else:
                 print(filename[:-5])
