@@ -1,4 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/badge/rich-13.7.0-blue)](https://github.com/Textualize/rich)
+[![](https://img.shields.io/badge/tqdm-4.66.1-orange)](https://tqdm.github.io/)
 
 <h1 align="center">Doors</h1>
 Education is a societal investment from which everyone benefits, and it's never too late to start. The challenge increases with age, but it's surmountable. Time and money often appear as barriers to change, but imagine if they weren't. Consider a scenario where learning immediately translates into tangible monetary value, without exceptions, for as long as desired. This vision is rooted at the crossroads of educational technology, artificial intelligence, gaming, marketing, and blockchain. Our mission is straightforward: we don't aim to change anything; we simply want you to demonstrate the intelligence you inherently possess.
