@@ -6,11 +6,13 @@
 Education is a societal investment from which everyone benefits, and it's never too late to start. The challenge increases with age, but it's surmountable. Time and money often appear as barriers to change, but imagine if they weren't. Consider a scenario where learning immediately translates into tangible monetary value, without exceptions, for as long as desired. This vision is rooted at the crossroads of educational technology, artificial intelligence, gaming, marketing, and blockchain. Our mission is straightforward: we don't aim to change anything; we simply want you to demonstrate the intelligence you inherently possess.
 
 #### Version
-doors 0.1.0-alpha <br>
+[![](https://img.shields.io/badge/doors-0.1.0%20alpha-green
+)](https://github.com/kfmh/doors)
+ <br>
 The alpha version serves as an initial prototype designed for feature testing.
 
 ### Follow the journey on: 
-[Logbook](https://kfmh.github.io/) 
+[Developer Logbook](https://kfmh.github.io/) 
 
 <!--
 <p align="center">
@@ -40,7 +42,7 @@ source <enviroment_neme>/bin/activate
 conda create -n <enviroment_neme>
 conda activate <enviroment_neme>
 ```
-3. Install uw_chess package
+3. Install doors package
 ```bash
 pip install git+https://github.com/kfmh/doors.git
 ```
@@ -52,11 +54,11 @@ pip install git+https://github.com/kfmh/doors.git
 | --available_courses | -amcq | None | List all available courses |
 | --mcq_course        | -mcq  | None | Choose course |
 
-Available Courses
+Available multiple choice question courses
 | Course Name | Description |
 |----------|----------|
-| python_logic | Multiple choice question about python logic |
-| python_math  | Multiple choice question about python math operations |
+| python_logic | python logic |
+| python_math  | python math operations |
 
 Start program
 ```bash
@@ -64,8 +66,11 @@ Start program
 # Example: doors -mcq python_logic
 doors -mcq <course_name>
 ```
-
 Quit program: ctrl + c
+
+## Add course
+[Create a course README.md](https://github.com/kfmh/doors/tree/main/src/doors/mcq_courses)
+
 
 <!--
 ## Documentation
