@@ -24,9 +24,9 @@ yarn-error.log*
 
 firebase-config.json
 
-/__pycache__*
-/sandbox*
-/venv*
+*__pycache__/
+
+*venv/
 devs.ipynb
 
 dist/
