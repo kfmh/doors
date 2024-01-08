@@ -19,10 +19,10 @@ class PrepareTest:
 
         if js != f[:-5]:
             error_message = (
-                '<-+-+-+-+->'
+                '<-+-+-+-+->\n'
                 'Courses name key does not match file name \n'
                 f'file name:{f}\n'
-                f'course name:{js}'
+                f'course name:{js}\n'
                 '<-+-+-+-+->'
             )
             return False, f, error_message
@@ -33,10 +33,10 @@ class PrepareTest:
     def mcq_indexing(self, f, json_content):
         index_list = list(json_content[f[:-5]].keys())
         error_message = (
-            '<-+-+-+-+->'
+            '<-+-+-+-+->\n'
             'Course question indexing is formatted wrong, \n'
             f'current index: {index_list}\n'
-            'correct indexing: ["0", "1", "2", ...]'
+            'correct indexing: ["0", "1", "2", ...]\n'
             '<-+-+-+-+->'
         )
 
@@ -59,10 +59,10 @@ class PrepareTest:
         for i in key_strings:
             if list(course_content[i].keys()) != correct_mcq_keys:
                 error_message = (
-                    '<-+-+-+-+->'
+                    '<-+-+-+-+->\n'
                     f'Course mcq keys are inncorect on index {i} \n'
                     f'current keys: {list(course_content[i].keys())} \n'
-                    f'correct keys: {correct_mcq_keys}'
+                    f'correct keys: {correct_mcq_keys}\n'
                     '<-+-+-+-+->'
                 )
                 print(error_message)
@@ -82,9 +82,9 @@ class PrepareTest:
             for k in mcq_keys:
                 if type(q[k]) != str:
                     error_message = (
-                       '<-+-+-+-+->'
+                       '<-+-+-+-+->\n'
                        f'Incorrect datatype, all MCQ values must be strings {i} \n'
-                       f'Error at: (key:{k}, value:{q[k]}, typ:{type(q[k])})'
+                       f'Error at: (key:{k}, value:{q[k]}, typ:{type(q[k])})\n'
                        '<-+-+-+-+->'
                     )   
                     return False, f, error_message
