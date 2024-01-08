@@ -21,4 +21,4 @@ jobs:
         python -m pip install --upgrade pip
         # Add any dependencies here
     - name: Run test script
-      run: python test/test_mcq_courses.py
+      run: python tests/test_mcq_courses.py
