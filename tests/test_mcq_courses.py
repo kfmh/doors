@@ -2,13 +2,13 @@ import unittest
 # from ..src.doors.mcq_courses import mcq_process
 import json
 import os
+import pkg_resources
 
 class PrepareTest:
     def __init__(self, 
                  directory="../src/doors/mcq_courses/",
                  exclude_file=['README.md','mcq_template.json']):
-        
-        self.directory = directory
+        self.directory = pkg_resources.resource_filename(__name__,directory)
         self.exclude_file = exclude_file
         self.files = [f for f in os.listdir(self.directory) 
                       if os.path.isfile(os.path.join(self.directory, f)) 
