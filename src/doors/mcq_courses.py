@@ -20,11 +20,7 @@ question_mark = "❔"
 # -------------------------------------------------------------
 class MCQ:
     def __init__(self, mcq_json:str="./mcq_courses/"):
-        """_summary_
 
-        Args:
-            mcq_json (str): 
-        """
         self.mcq_json = mcq_json
         self.console = Console()
     
@@ -47,7 +43,8 @@ class MCQ:
     
 # -------------------------------------------------------------
     def mcq_process(self, course:str):
-        path = pkg_resources.resource_filename(__name__, f'{self.mcq_json}{course}.json')
+        path = pkg_resources.resource_filename(__name__, 
+                                               f'{self.mcq_json}{course}.json')
         with open(path, 'r') as file:
             course_data = json.load(file)
 

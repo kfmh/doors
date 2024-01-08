@@ -1,0 +1,24 @@
+name: MCQ Format Test
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/doors/mcq_courses/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # Add any dependencies here
+    - name: Run test script
+      run: python test/test_mcq_courses.py
