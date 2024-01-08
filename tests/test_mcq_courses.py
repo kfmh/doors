@@ -16,10 +16,16 @@ class PrepareTest:
         
     def mcq_course_name(self, f, json_content):
         js = next(iter(json_content))
-        error_message = 'Coures name key does not match file name'
+        error_message = 
 
         if js != f[:-5]:
-            print(f"{error_message}\nfile name:{f} \ncourse name:{js}")
+            error_message = (
+                '<-+-+-+-+->'
+                'Courses name key does not match file name \n'
+                f'file name:{f}\n'
+                f'course name:{js}'
+                '<-+-+-+-+->'
+            )
             return False, f, error_message
         else:
             return True, f, 'Check cleard'
@@ -28,9 +34,11 @@ class PrepareTest:
     def mcq_indexing(self, f, json_content):
         index_list = list(json_content[f[:-5]].keys())
         error_message = (
+            '<-+-+-+-+->'
             'Course question indexing is formatted wrong, \n'
             f'current index: {index_list}\n'
-            'correct index: ["0", "1", "2", ...]'
+            'correct indexing: ["0", "1", "2", ...]'
+            '<-+-+-+-+->'
         )
 
 
@@ -52,9 +60,11 @@ class PrepareTest:
         for i in key_strings:
             if list(course_content[i].keys()) != correct_mcq_keys:
                 error_message = (
+                    '<-+-+-+-+->'
                     f'Course mcq keys are inncorect on index {i} \n'
                     f'current keys: {list(course_content[i].keys())} \n'
                     f'correct keys: {correct_mcq_keys}'
+                    '<-+-+-+-+->'
                 )
                 print(error_message)
                 return False, f, error_message
@@ -67,19 +77,23 @@ class PrepareTest:
         key_strings = list(course_content.keys())
         mcq_keys = ['question', 'explanation', 
                     'wrong_1', 'wrong_2', 'correct']
-        error_message = 'Incorrect datatype, all MCQ values must be strings'
 
         for i in key_strings:
             q = course_content[i]
             for k in mcq_keys:
                 if type(q[k]) != str:
-                    print(f"{error_message}:\nkey:{k}, value:{q[k]}, typ:{type(q[k])}")
+                    error_message = (
+                       '<-+-+-+-+->'
+                       f'Incorrect datatype, all MCQ values must be strings {i} \n'
+                       f'Error at: (key:{k}, value:{q[k]}, typ:{type(q[k])})'
+                       '<-+-+-+-+->'
+                    )   
                     return False, f, error_message
                 else:
                     pass
 
         return True, f, 'Check cleard'
-        
+
         
     def test_jsonformat(self):
         checks = 0
