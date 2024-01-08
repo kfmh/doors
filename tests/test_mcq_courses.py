@@ -16,7 +16,6 @@ class PrepareTest:
         
     def mcq_course_name(self, f, json_content):
         js = next(iter(json_content))
-        error_message = 
 
         if js != f[:-5]:
             error_message = (
