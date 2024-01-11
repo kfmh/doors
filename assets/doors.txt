@@ -1,23 +1,24 @@
-
-        MMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWMMMMM
-        MMMMMMMo||||||||||||||||||||||||oMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|    Wood: 40%         |bMMMMMMM
-        MMMMMMMd|   Steel: 30%         |bMMMMMMM
-        MMMMMMMd|   Glass: 30%         |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|              _____   |bMMMMMMM
-        MMMMMMMd|              |xxx|   |bMMMMMMM
-        MMMMMMMd|              """""   |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMMd|                      |bMMMMMMM
-        MMMMMMOO||||||||||||||||||||||||OOMMMMMM
-        MMMMMOO::::::::::::::::::::::::::OOMMMMM
-        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+        MMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWMMMMMM
+        MMMMMMMo||||||||||||||||||||||||||||oMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                  _____   |bMMMMMMM
+        MMMMMMMd|                  |xxx|   |bMMMMMMM
+        MMMMMMMd|                  """""   |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMMd|                          |bMMMMMMM
+        MMMMMMOO||||||||||||||||||||||||||||OOMMMMMM
+        MMMMMOO:::::::::::::::::::::::::::::OOMMMMMM
+        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
