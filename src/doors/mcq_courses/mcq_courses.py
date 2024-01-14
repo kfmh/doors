@@ -19,7 +19,7 @@ question_mark = "❔"
 
 # -------------------------------------------------------------
 class MCQ:
-    def __init__(self, mcq_json:str="./mcq_courses/"):
+    def __init__(self, mcq_json:str="./"):
 
         self.mcq_json = mcq_json
         self.console = Console()
