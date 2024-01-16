@@ -1,0 +1,14 @@
+{
+    "door_name": {
+        "1": {"percentage": 19, "property": "wood"},
+        "2": {"percentage": 5, "property":"Stone"},
+        "3": {"percentage": 6, "property":"Steel"},
+        "4": {"percentage": 14, "property":"Clay"},
+        "5": {"percentage": 3, "property":"Glass"},
+        "6": {"percentage": 8, "property":"Tin"},
+        "7": {"percentage": 12, "property":"Paint"},
+        "8": {"percentage": 6, "property":"Gold"},
+        "9": {"percentage": 2, "property":"Dimond"},
+        "10":{"percentage": 25, "property":"Dirt"}
+    }
+}

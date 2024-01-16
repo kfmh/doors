@@ -3,7 +3,7 @@
 # 
 # ============================================================================
 
-from .mcq_courses import MCQ
+from .mcq_courses.mcq_courses import MCQ
 from .cli_parser import get_parser
 
 def main():
