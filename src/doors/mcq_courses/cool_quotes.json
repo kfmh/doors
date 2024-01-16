@@ -1,0 +1,18 @@
+{
+    "cool_quotes": {
+        "0": {
+            "question": "What is the meaning of life?",
+            "explanation": "The meaning of life as a reference to 'The Hitchhiker's Guide to the Galaxy'",
+            "wrong_1": "Burgers",
+            "wrong_2": "Pizza",
+            "correct": "42"
+        },
+        "1": {
+            "question": "What is the mind killer?",
+            "explanation": "The a reference to 'Dune'",
+            "wrong_1": "Doubt",
+            "wrong_2": "Alcohol",
+            "correct": "Fear"
+        }
+    }   
+}

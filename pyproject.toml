@@ -9,7 +9,7 @@ packages = ["doors"]
 
 [project]
 name = "doors"
-version = "0.1.0-alpha"
+version = "0.1.1-alpha"
 description = "Educational ed-tech game project"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
