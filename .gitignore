@@ -26,6 +26,7 @@ firebase-config.json
 
 *venv/
 devs.ipynb
+*devs/
 
 dist/
 *.egg-info/
