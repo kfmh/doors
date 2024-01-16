@@ -7,7 +7,7 @@ import pkg_resources
 class PrepareTest:
     def __init__(self, 
                  directory="../src/doors/mcq_courses/",
-                 exclude_file=['README.md','mcq_template.json']):
+                 exclude_file=['README.md','mcq_template.json','mcq_courses.py', '__init__.py']):
         self.directory = pkg_resources.resource_filename(__name__,directory)
         self.exclude_file = exclude_file
         self.files = [f for f in os.listdir(self.directory) 
