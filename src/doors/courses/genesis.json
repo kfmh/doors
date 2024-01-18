@@ -1,3 +1,8 @@
 {
-    "Genesis": "Genesis course"
+    "genesis": {
+        "illuminate_packs": 10,
+        "doors": {
+            "random_seed": "answer"
+        }
+    }
 }

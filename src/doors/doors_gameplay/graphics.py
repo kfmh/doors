@@ -1,5 +1,5 @@
 import curses
-
+from collections import Counter
 
 class RenderASCII:
     def __init__(self, 
@@ -76,8 +76,10 @@ class RenderASCII:
             f'\n| {str(pos)}'
             f' | R:{resource_pickups}'
         )
+        strr =Counter(self.path)
+        more_than_one = {item: strr[item] for item in strr if strr[item] > 1}
         self.stdscr.addstr(game_play_baar)
-        # self.stdscr.addstr(f'\n{str(path)}')
+        self.stdscr.addstr(f'\n{str(more_than_one)}')
         # self.stdscr.addstr(f'\n{str(assets_xy_list)}')
 
     def render_resources(self, crd, resources):

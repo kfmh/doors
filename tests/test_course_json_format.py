@@ -1,8 +1,5 @@
 import json
 import unittest
-import os
-from importlib import resources  # Use importlib.resources for Python 3.7+
-
 from src.doors.file_manager import FileManager
 
 fpm = FileManager()
@@ -10,6 +7,7 @@ fpm = FileManager()
 class JsonFormatTests:
 
     # First test if lods jsons
+    @staticmethod
     def is_json(document):
         try:
             json.loads(document)
@@ -24,6 +22,8 @@ class Testjsonformat(unittest.TestCase):
     def test_is_json(self):
         """Test all that all files are json and can be loades 
         files in courses directory"""
+        json_format_tests = JsonFormatTests()
+
         file_paths = fpm.filepath_list(
             directory = '/courses/',
             exclude_files = ['README.md'])
@@ -31,7 +31,8 @@ class Testjsonformat(unittest.TestCase):
         for f in file_paths:
             with open(f, 'r') as file:
                 file_content = file.read()
-            self.assertTrue(JsonFormatTests().is_json(file_content))
+            # print(file_content)
+            self.assertTrue(json_format_tests.is_json(file_content))
         
     
 
