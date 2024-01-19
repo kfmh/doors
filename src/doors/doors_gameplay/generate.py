@@ -1,5 +1,25 @@
+import json
 import random
 
+class GameItems:
+    def __init__(self, course_name):
+        self.course_name = course_name
+        with open(f'../courses/{course_name}.json', 'r') as f:
+            course = json.load(f)
+        self.course = course
+
+    def generate_resourses(self):
+        illuminate_pickups_count = self.course[self.course_name]["game_items"]["illuminate_packs"] 
+        
+        illuminate_pickups = ['*' for i in range(illuminate_pickups_count)]
+        return illuminate_pickups
+
+    def generate_doors(self):
+        doors = self.course[self.course_name]["doors"]
+        doors_list = list(doors.keys())
+        doorframes = ['∩' for i in range(len(doors_list))]
+            
+        return doors, doors_list, doorframes
 
 class Maze:
     def __init__(self,

@@ -1,9 +1,4 @@
 import curses 
-import json
-import random
-from maze import Maze
-from graphics import RenderASCII
-
 class Game:
     """Main game loop"""
     def __init__(self,
@@ -11,10 +6,12 @@ class Game:
                  hide_maze,
                  path,
                  assets_xy_list,
+                 doors_xy_list,
+                 doors_name_list = [],
                  size_x=4,
                  size_y=5,
+                 illuminate_pickups = [],
                  resource_pickups = 0,
-                 illuminate_pickups = []
                  ):
         """Initialize variables for the game.
 
@@ -39,9 +36,14 @@ class Game:
         self.hide_maze = hide_maze
         self.resource_pickups = resource_pickups
         self.assets_xy_list = assets_xy_list
+        self.doors_xy_list  = doors_xy_list
+        self.doors_name_list = doors_name_list
         self.illuminate_pickups = illuminate_pickups
         self.illuminate = 0
-
+        # self.show_door = False
+        self.door_name = ""
+        self.listen_for_trigger = False
+        
 
     def is_within_bounds(self, x, y):
         """Returns bool if player is within bounds"""
@@ -53,36 +55,48 @@ class Game:
         return (x, y) in self.path
     
     def update_player_position(self, key):
-        """_summary_
-
-        Args:
-            key (obejct): Player input key, left, up, down, right
-
-        Returns:
-            tuple: with (x, y) coordinates of player position 
-        """
+        """Hanldes player input and position update"""
         new_x, new_y = self.player_x, self.player_y
+        show_door = False
         if   key == curses.KEY_UP:    new_y -= 1
         elif key == curses.KEY_DOWN:  new_y += 1
         elif key == curses.KEY_LEFT:  new_x -= 1
         elif key == curses.KEY_RIGHT: new_x += 1
-        
+
+        elif key in [ord('\n'), ord('\r'), 10] and self.listen_for_trigger: 
+            show_door = True
+
+        elif key == curses.KEY_BACKSPACE: 
+            self.listen_for_trigger = False
+            show_door = False
+
         if self.is_within_bounds(new_x, new_y) \
         and self.is_on_path(new_x, new_y) \
         and new_x != 0 and new_y != 0:
+            
             self.player_x, self.player_y = new_x, new_y
+
             if self.illuminate != 0:
                 self.illuminate -= 1
 
-            if (self.player_x, self.player_y) in self.assets_xy_list:
+            elif (self.player_x, self.player_y) in self.assets_xy_list:
                 x, y = self.player_x, self.player_y
                 self.resource_pickups += 1
+
                 i = self.assets_xy_list.index((x, y))
                 self.illuminate_pickups.pop(i)
                 self.assets_xy_list.remove((x,y))
                 self.illuminate_maze(3)
 
-        return (self.player_x, self.player_y)
+            elif (self.player_x, self.player_y) in self.doors_xy_list:
+                door_index = self.doors_xy_list.index((self.player_x, self.player_y))
+                self.door_name = self.doors_name_list[door_index]
+                self.listen_for_trigger = True
+
+            elif (self.player_x, self.player_y) not in self.doors_xy_list:
+                self.listen_for_trigger = True
+
+        return show_door, (self.player_x, self.player_y)
     
     def illuminate_maze(self, steps):
         """Sets how many steps the maze should be visible
@@ -93,7 +107,7 @@ class Game:
         """
         self.illuminate = steps
 
-    def run(self, render_method, assets_xy_list):
+    def run(self, render_method, assets_xy_list, doors_xy_list, doors_frames):
         """Starts the game loop
 
         Args:
@@ -101,29 +115,39 @@ class Game:
             assets_xy_list (list): list of (x, y) coordiantes for game assets 
         """
         curses.curs_set(0)
+        show_door = False
         render_method.draw_board(
                         (1,1),
                         self.player_y,
                         self.player_x,
                         assets_xy_list,
+                        doors_xy_list,
                         self.hide_maze,
                         self.resource_pickups,
                         self.illuminate_pickups,
-                        self.illuminate)
+                        doors_frames,
+                        self.illuminate,
+                        show_door,
+                        self.door_name
+                        )
         try:
             while True:
                 # self.draw_board(pos)
                 key = self.stdscr.getch()
-                pos = self.update_player_position(key)
+                show_door, pos = self.update_player_position(key)
                 render_method.draw_board(
                                         pos,
                                         self.player_y,
                                         self.player_x,
                                         assets_xy_list,
+                                        doors_xy_list,
                                         self.hide_maze,
                                         self.resource_pickups,
                                         self.illuminate_pickups,
-                                        self.illuminate
+                                        doors_frames,
+                                        self.illuminate,
+                                        show_door,
+                                        self.door_name
                                         )
 
 

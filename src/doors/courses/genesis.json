@@ -1,8 +1,22 @@
 {
     "genesis": {
-        "illuminate_packs": 10,
+        "game_items": {
+            "illuminate_packs": 10
+        },
         "doors": {
-            "random_seed": "answer"
+            "random_seed": {
+                "1": {"percentage": 19, "property": "Random Seed"},
+                "2": {"percentage": 19, "property": "Random Seed"},
+                "3": {"percentage": 19, "property": "Random Seed"}
+            },
+            "another_door": {
+                "1": {"percentage": 19, "property": "other door"}
+            },
+            "test": {
+                "1": {"percentage": 19, "property": "test door"},
+                "2": {"percentage": 19, "property": "test door"},
+                "3": {"percentage": 19, "property": "test door"}
+            }
         }
     }
 }

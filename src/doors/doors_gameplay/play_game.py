@@ -1,8 +1,8 @@
 import curses 
-import json
 import argparse
 import random
-from maze import Maze
+# from maze import Maze
+from generate import Maze, GameItems
 from graphics import RenderASCII
 from game_mechanichs import Game
 # Create the parser
@@ -22,31 +22,42 @@ def main(stdscr):
     Args:
         stdscr (object): Curses window object
     """
-    with open('../courses/genesis.json', 'r') as f:
-        file = json.load(f)
     
     board_size_x = 40
     board_size_y = 30
-    illuminate_pickups_count = file["genesis"]["illuminate_packs"] 
     maze = Maze(board_size_x, board_size_y)
     path = maze.generate_maze()
-    illuminate_pickups = ['*' for i in range(illuminate_pickups_count)]
-    assets_xy_list = random.sample(path, illuminate_pickups_count)
-    game = Game(stdscr, args.show_maze, 
+    # Generate game items
+    course = GameItems('genesis')
+    illuminate_pickups = course.generate_resourses()
+    door_propertys, doors_name_list, door_graphics = course.generate_doors()
+
+    assets_xy_list = random.sample(path, len(illuminate_pickups))
+    doors_xy_list  = random.sample(path, len(door_propertys))    
+    
+    while any(item in doors_xy_list  for item in assets_xy_list):
+        doors_xy_list  = random.sample(path, len(door_propertys))    
+
+    game = Game(stdscr, 
+                args.show_maze, 
                 path = path,
                 assets_xy_list = assets_xy_list,
+                doors_xy_list  = doors_xy_list,
+                doors_name_list = doors_name_list,
                 size_x= board_size_x, 
                 size_y= board_size_y, 
-                illuminate_pickups = illuminate_pickups
+                illuminate_pickups = illuminate_pickups,
                 )
     
     render_ASCII = RenderASCII(stdscr,
                                board_size_x,
                                board_size_y,
                                path,
-                               assets_xy_list
+                               assets_xy_list,
+                               doors_xy_list,
+                               door_propertys
                                )
-    game.run(render_ASCII, assets_xy_list)
+    game.run(render_ASCII, assets_xy_list, doors_xy_list, door_graphics)
 
 if __name__=="__main__":
     curses.wrapper(main)
