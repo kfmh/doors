@@ -1,24 +1,24 @@
-        MMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWMMMMMM
-        MMMMMMMo||||||||||||||||||||||||||||oMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                  _____   |bMMMMMMM
-        MMMMMMMd|                  |xxx|   |bMMMMMMM
-        MMMMMMMd|                  """""   |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMMd|                          |bMMMMMMM
-        MMMMMMOO||||||||||||||||||||||||||||OOMMMMMM
-        MMMMMOO:::::::::::::::::::::::::::::OOMMMMMM
-        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+        Mo||||||||||||||||||||||||||||oM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                  _____   |bM
+        Md|                  |xxx|   |bM
+        Md|                  """""   |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        Md|                          |bM
+        OO||||||||||||||||||||||||||||OO
+        O:::::::::::::::::::::::::::::OO
+        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

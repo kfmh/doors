@@ -5,17 +5,16 @@
         },
         "doors": {
             "random_seed": {
-                "1": {"percentage": 19, "property": "Random Seed"},
-                "2": {"percentage": 19, "property": "Random Seed"},
-                "3": {"percentage": 19, "property": "Random Seed"}
+                "1": {"percentage": 90, "property": "Steel"},
+                "2": {"percentage": 10, "property": "PVC"}
             },
             "another_door": {
-                "1": {"percentage": 19, "property": "other door"}
+                "1": {"percentage": 100, "property": "Ice"}
             },
             "test": {
-                "1": {"percentage": 19, "property": "test door"},
-                "2": {"percentage": 19, "property": "test door"},
-                "3": {"percentage": 19, "property": "test door"}
+                "1": {"percentage": 80, "property": "Wood"},
+                "2": {"percentage": 10, "property": "Glass"},
+                "3": {"percentage": 10, "property": "Steel"}
             }
         }
     }
