@@ -11,7 +11,8 @@ class RenderASCII:
                  path,
                  assets_xy_list,
                  doors_xy_list,
-                 door_propertys
+                 door_propertys,
+                 resource_count
                  ):
         self.stdscr = stdscr
         self.board_size_x = board_size_x
@@ -20,17 +21,15 @@ class RenderASCII:
         self.assets_xy_list = assets_xy_list
         self.doors_xy_list = doors_xy_list
         self.door_propertys = door_propertys
+        self.resource_count = resource_count
 
         curses.start_color()
         curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
         curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
 
     def draw_board(self, 
-                   pos,
                    player_y,
                    player_x,
-                   assets_xy_list,
-                   doors_xy_list,
                    hide_maze,
                    resource_pickups,
                    assets_graphic,
@@ -80,7 +79,7 @@ class RenderASCII:
                         else: 
                             self.render_object((x,y), resource_list, hide_maze)
                     
-            self.game_play_baar((player_x, player_y))
+            self.game_play_baar((player_x, player_y), resource_pickups)
                 
 
     def visible_path_radius(self, 
@@ -112,15 +111,15 @@ class RenderASCII:
 
             
 
-    def game_play_baar(self, pos):
+    def game_play_baar(self, pos, resource_pickups):
         game_play_baar_str = (
             f'\n| {str(pos)}'
-            # f' | R:{resource_pickups}'
+            f' | R:{resource_pickups}/{self.resource_count}'
         )
         self.stdscr.addstr(game_play_baar_str)
         # strr =Counter(self.path)
         # more_than_one = {item: strr[item] for item in strr if strr[item] > 1}
-        # self.stdscr.addstr(f'\n{str(more_than_one)}')
+        # self.stdscr.addstr(f'\n{str(more_than_one)}') 
 
     def render_object(self, coordiantes, resource_list, hide_maze):
         if not hide_maze:

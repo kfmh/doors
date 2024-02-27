@@ -1,11 +1,11 @@
 {
-    "genesis": {
+    "caesar_cipher": {
         "game_items": {
             "illuminate_packs": 10,
             "course_plan": ""
         },
         "doors": {
-            "random_seed": {
+            "riddle": {
                 "1": {"percentage": 90, "property": ""},
                 "2": {"percentage": 10, "property": ""}
             }

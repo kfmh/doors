@@ -40,7 +40,6 @@ class Game:
         self.doors_name_list = doors_name_list
         self.illuminate_pickups = illuminate_pickups
         self.illuminate = 0
-        # self.show_door = False
         self.door_name = ""
         self.listen_for_trigger = False
         
@@ -54,6 +53,31 @@ class Game:
         """Returns bool if player is on path"""
         return (x, y) in self.path
     
+    def assets_handler(self):
+        if (self.player_x, self.player_y) in self.assets_xy_list:
+            x, y = self.player_x, self.player_y
+            self.resource_pickups += 1
+
+            i = self.assets_xy_list.index((x, y))
+            self.illuminate_pickups.pop(i)
+            self.assets_xy_list.remove((x,y))
+            self.illuminate_maze(3)
+    
+    def doors_handler(self):
+        if (self.player_x, self.player_y) in self.doors_xy_list:
+            door_index = self.doors_xy_list.index((self.player_x, self.player_y))
+            self.door_name = self.doors_name_list[door_index]
+            self.listen_for_trigger = True
+        elif (self.player_x, self.player_y) not in self.doors_xy_list:
+            self.listen_for_trigger = False
+
+    def handle_items(self):
+        if self.illuminate != 0:
+            self.illuminate -= 1
+        self.assets_handler()
+        self.doors_handler()
+
+
     def update_player_position(self, key):
         """Hanldes player input and position update"""
         new_x, new_y = self.player_x, self.player_y
@@ -65,6 +89,7 @@ class Game:
 
         elif key in [ord('\n'), ord('\r'), 10] and self.listen_for_trigger: 
             show_door = True
+            self.listen_for_trigger = False
 
         elif key == curses.KEY_BACKSPACE: 
             self.listen_for_trigger = False
@@ -75,28 +100,9 @@ class Game:
         and new_x != 0 and new_y != 0:
             
             self.player_x, self.player_y = new_x, new_y
+            self.handle_items()
 
-            if self.illuminate != 0:
-                self.illuminate -= 1
-
-            elif (self.player_x, self.player_y) in self.assets_xy_list:
-                x, y = self.player_x, self.player_y
-                self.resource_pickups += 1
-
-                i = self.assets_xy_list.index((x, y))
-                self.illuminate_pickups.pop(i)
-                self.assets_xy_list.remove((x,y))
-                self.illuminate_maze(3)
-
-            elif (self.player_x, self.player_y) in self.doors_xy_list:
-                door_index = self.doors_xy_list.index((self.player_x, self.player_y))
-                self.door_name = self.doors_name_list[door_index]
-                self.listen_for_trigger = True
-
-            elif (self.player_x, self.player_y) not in self.doors_xy_list:
-                self.listen_for_trigger = True
-
-        return show_door, (self.player_x, self.player_y)
+        return show_door
     
     def illuminate_maze(self, steps):
         """Sets how many steps the maze should be visible
@@ -117,11 +123,8 @@ class Game:
         curses.curs_set(0)
         show_door = False
         render_method.draw_board(
-                        (1,1),
                         self.player_y,
                         self.player_x,
-                        assets_xy_list,
-                        doors_xy_list,
                         self.hide_maze,
                         self.resource_pickups,
                         self.illuminate_pickups,
@@ -132,15 +135,11 @@ class Game:
                         )
         try:
             while True:
-                # self.draw_board(pos)
                 key = self.stdscr.getch()
-                show_door, pos = self.update_player_position(key)
+                show_door = self.update_player_position(key)
                 render_method.draw_board(
-                                        pos,
                                         self.player_y,
                                         self.player_x,
-                                        assets_xy_list,
-                                        doors_xy_list,
                                         self.hide_maze,
                                         self.resource_pickups,
                                         self.illuminate_pickups,

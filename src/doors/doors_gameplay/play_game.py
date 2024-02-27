@@ -30,6 +30,7 @@ def main(stdscr):
     # Generate game items
     course = GameItems('genesis')
     illuminate_pickups = course.generate_resourses()
+    resource_count = len(illuminate_pickups)
     door_propertys, doors_name_list, door_graphics = course.generate_doors()
 
     assets_xy_list = random.sample(path, len(illuminate_pickups))
@@ -55,7 +56,8 @@ def main(stdscr):
                                path,
                                assets_xy_list,
                                doors_xy_list,
-                               door_propertys
+                               door_propertys,
+                               resource_count
                                )
     game.run(render_ASCII, assets_xy_list, doors_xy_list, door_graphics)
 
